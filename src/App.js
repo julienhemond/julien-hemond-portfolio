@@ -35,10 +35,13 @@ function ContactButton() {
 // Navbar structure
 function Navbar() {
   return (
-    <nav className="flex flex-no-wrap flex-row justify-between">
-      <div className='flex-initial'><img src={logoDev} alt="Logo developper and engineer" className="object-contain h-full" /></div>
-      <div className='flex-initial'><h2>Julien Hémond</h2></div>
-      <div className='flex-initial flex flex-no-wrap flex-row justify-end content-start'>
+    <nav className="flex h-16 flex-no-wrap justify-between ">
+      <header className="flex-initial flex flex-no-wrap justify-start gap-4">
+        <div className='flex-initial m-1'><img src={logoDev} alt="Logo developper and engineer" className="object-contain h-full" /></div>
+        <div className='flex-initial self-center'><h2>Julien Hémond</h2></div>
+      </header>
+
+      <div className='flex-initial flex flex-no-wrap justify-end content-start'>
         <ProjectButton />
         <AboutButton />
         <GithubButton />
@@ -52,9 +55,9 @@ function Navbar() {
 function App() {
   return (
     <div className="App">
-      <header>
+      <section>
         <Navbar />
-      </header>
+      </section>
 
 
     </div>
