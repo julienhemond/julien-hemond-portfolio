@@ -2,6 +2,16 @@ import logo from './logo.svg';
 import logoDev from './logo-developper-engineering.png';
 import './App.css';
 
+const project1 = {
+  "name": "Application de recherche de planètes avec l'api NASA",
+  "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda accusamus omnis voluptas laborum expedita magni necessitatibus saepe quo. Optio tempore nesciunt similique debitis natus blanditiis id repudiandae corrupti, minus officia dolor facere iusto temporibus porro rem eligendi quia beatae vero nam voluptate. Harum nam at, quod dolorum maiores explicabo temporibus velit dignissimos id, libero, quis dicta! Nostrum ipsam delectus non quisquam eum tenetur, velit sint eligendi aperiam corrupti iure provident iusto, excepturi modi unde nam saepe dicta commodi obcaecati ad! Distinctio, dolor doloremque incidunt quisquam impedit officia a repellendus vero quos! Ullam vitae distinctio incidunt iste recusandae animi aliquam hic.",
+  "image": "https://img.freepik.com/premium-photo/wonderful-ice-exoplanet-drawing-elements-this-image-furnished-by-nasa_410516-25545.jpg",
+  "link": "",
+  "github": ""
+};
+
+const projectsList = [project1, project1];
+
 
 function HeaderButton({ buttonTextContent, onClickHandler }) {
   return (
@@ -11,7 +21,7 @@ function HeaderButton({ buttonTextContent, onClickHandler }) {
   );
 }
 
-function ProjectButton() {
+function ProjectsButton() {
   return <HeaderButton buttonTextContent="Projets" onClick="" />;
 }
 
@@ -30,6 +40,29 @@ function ContactButton() {
   return <HeaderButton buttonTextContent="Contact" />;
 }
 
+function ProjectsPage() {
+  return (
+    <main className="flex flex-row flex-wrap">
+      {projectsList.map((project, index) => (
+        <article className='flex-none grid grid-cols-1 grid-rows-7 h-128 w-32'>
+          <div><h4>{project.name}</h4></div>
+          <div className='grid-cols-5'><img src={project.image} className='object-cover' /></div>
+          <div><p>En savoir plus</p><button className='arrow-corner-expand-box'></button></div>
+        </article>
+      ))}
+    </main>
+  );
+}
+
+function ShowOneProject(project) {
+  return <article className='flex-none grid grid-cols-1 grid-rows-7'>
+    <div><h4>{project.name}</h4></div>
+    <div className='grid-cols-5'><img src={project.image} /></div>
+    <div><p>En savoir plus</p><button className='arrow-corner-expand-box'></button></div>
+
+  </article>
+}
+
 
 
 // Navbar structure
@@ -42,7 +75,7 @@ function Navbar() {
       </header>
 
       <div className='flex-initial flex flex-no-wrap justify-end content-start'>
-        <ProjectButton />
+        <ProjectsButton />
         <AboutButton />
         <GithubButton />
         <ContactButton />
@@ -58,6 +91,10 @@ function App() {
       <section>
         <Navbar />
       </section>
+      <section>
+        <ProjectsPage />
+      </section>
+
 
 
     </div>
