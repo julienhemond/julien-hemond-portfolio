@@ -47,7 +47,7 @@ function Navbar() {
         <GithubButton />
         <ContactButton />
       </div>
-      {/* TODO : add envoyer un message button */}
+      {/* TODO : add envoyer un message button*/}
     </nav>
   )
 }
