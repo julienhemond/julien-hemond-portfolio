@@ -1,3 +1,4 @@
+import * as React from 'react';
 import logo from './logo.svg';
 import logoDev from './logo-developper-engineering.png';
 import './App.css';
@@ -21,12 +22,22 @@ function HeaderButton({ buttonTextContent, onClickHandler }) {
   );
 }
 
+function showDialog(selector) {
+  const dialog = document.querySelector(selector);
+  if (dialog)
+    document.querySelector(selector).showModal();
+  else
+    console.error(`Dialog with selector "${selector}" not found`);
+}
+
 function ProjectsButton() {
   return <HeaderButton buttonTextContent="Projets" onClick="" />;
 }
 
 function AboutButton() {
+
   return <HeaderButton buttonTextContent="À propos" />;
+
 }
 
 function GithubButton() {
@@ -36,8 +47,24 @@ function GithubButton() {
   return <HeaderButton buttonTextContent="Github" onClickHandler={visitGithub} />;
 }
 
+function DialogContact() {
+  const handleClose = () => {
+    const dialog = document.querySelector(".dialog-contact");
+    if (dialog)
+      dialog.close();
+  }
+  return (<dialog className="dialog-contact">
+    <div><h3>Joindre</h3></div>
+    <div><p>Linkedin</p></div>
+    <div><p>Courriel</p></div>
+    <button onClick={handleClose}>Fermer</button>
+  </dialog>);
+}
 function ContactButton() {
-  return <HeaderButton buttonTextContent="Contact" />;
+  const handleClick = () => {
+    showDialog(".dialog-contact")
+  }
+  return <HeaderButton buttonTextContent="Contact" onClickHandler={handleClick} />;
 }
 
 function ProjectsPage() {
@@ -62,6 +89,7 @@ function ShowOneProject(project) {
 
   </article>
 }
+
 
 
 
@@ -93,7 +121,7 @@ function App() {
       </section>
       <section>
         <ProjectsPage />
-      </section>
+      </section><section><DialogContact /></section>
 
 
 
