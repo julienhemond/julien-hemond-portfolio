@@ -47,6 +47,29 @@ function GithubButton() {
   return <HeaderButton buttonTextContent="Github" onClickHandler={visitGithub} />;
 }
 
+/**
+ * Select de base pour la barre de navigation. 
+ * 
+ * @param options est un tableau d'objets qui contiennent le label de l'option, sa value et l'handler que onChange doit appeler quand cette option est sélectionnée.
+ * @param value la valeur sélectionnée (pas certain de l'utiliser)
+ * @param placeholder est l'étiquette du nom de ce select.
+ *  */
+const SelectNav = ({ options, value, onChange, placeHolder }) => {
+  const handleChangeSelect = (event) => {
+    const objectChanged = options.find(obj => obj.value === event.target.value);
+    objectChanged.handler();
+  }
+
+  return (
+    <select /*value={value}*/ onChange={handleChangeSelect}>
+      <option value="">{placeHolder}</option>
+      {options.map((option) => {
+        <option value={option.value}>{option.label}</option>
+      })}
+    </select>
+  )
+};
+
 function DialogContact() {
   const handleClose = () => {
     const dialog = document.querySelector(".dialog-contact");
@@ -67,11 +90,12 @@ function ContactButton() {
   return <HeaderButton buttonTextContent="Contact" onClickHandler={handleClick} />;
 }
 
-function ContactSelect() {
-  return (<select>
-    <option value="linkedin">Linkedin</option>
-    <option value="email">Courriel</option>
-  </select>)
+function ContactsSelect() {
+  const optionsContacts = [{ "value": "linkedin", "label": "LinkedIn", "handler": () => { window.open("https://www.linkedin.com/julienhemond") } },
+  { "value": "email", "label": "Courriel", "handler": () => { window.open("https://www.etsmtl.ca/") } } //TODO : changer le handler de l'option courriel
+  ]
+  return (<SelectNav options={optionsContacts} value="" placeHolder="Contacts" onChange="">
+  </SelectNav>)
 }
 
 function ProjectsPage() {
@@ -113,7 +137,7 @@ function Navbar() {
         <ProjectsButton />
         <AboutButton />
         <GithubButton />
-        <ContactSelect />
+        <ContactsSelect />
       </div>
       {/* TODO : add envoyer un message button*/}
     </nav>
