@@ -67,6 +67,13 @@ function ContactButton() {
   return <HeaderButton buttonTextContent="Contact" onClickHandler={handleClick} />;
 }
 
+function ContactSelect() {
+  return (<select>
+    <option value="linkedin">Linkedin</option>
+    <option value="email">Courriel</option>
+  </select>)
+}
+
 function ProjectsPage() {
   return (
     <main className="flex flex-row flex-wrap">
@@ -106,7 +113,7 @@ function Navbar() {
         <ProjectsButton />
         <AboutButton />
         <GithubButton />
-        <ContactButton />
+        <ContactSelect />
       </div>
       {/* TODO : add envoyer un message button*/}
     </nav>
@@ -121,7 +128,7 @@ function App() {
       </section>
       <section>
         <ProjectsPage />
-      </section><section><DialogContact /></section>
+      </section>
 
 
 
